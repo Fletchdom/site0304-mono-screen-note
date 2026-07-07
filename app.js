@@ -9,6 +9,33 @@ const site = {
   description: "日本电影在线观看是2026年全新升级的在线影院，聚合日本全分区海量影视资源，涵盖日剧、电影、动漫、综艺、纪录片等。支持多端同步访问，海量高清精彩视频每日更新，无需下载即可观看，全部免费开放。"
 };
 
+let activeTdk = { ...site };
+
+function applyTdk(entry = activeTdk) {
+  document.title = entry.title;
+  document.querySelector("meta[name='keywords']")?.setAttribute("content", entry.keywords);
+  document.querySelector("meta[name='description']")?.setAttribute("content", entry.description);
+}
+
+function parseTdkLine(line) {
+  const parts = line.split("----").map((part) => part.trim());
+  if (parts.length < 3 || !parts[0]) return null;
+  return { title: parts[0], keywords: parts[1], description: parts.slice(2).join("----") };
+}
+
+async function loadTdk() {
+  try {
+    const text = await fetch("./tdk.txt", { cache: "no-store" }).then((response) => {
+      if (!response.ok) throw new Error("tdk missing");
+      return response.text();
+    });
+    const entries = text.split(/\r?\n/).map(parseTdkLine).filter(Boolean);
+    activeTdk = entries.find((entry) => entry.title.includes("日本电影")) || entries[0] || site;
+  } catch {
+    activeTdk = site;
+  }
+}
+
 const rows = [
   ["jp-001", "小偷家族", "Shoplifters", "日本电影", 2018, 8.7, "家庭", "./assets/posters/jp-001.jpg"],
   ["jp-002", "驾驶我的车", "Drive My Car", "日本电影", 2021, 8.4, "剧情", "./assets/posters/jp-002.jpg"],
@@ -121,9 +148,7 @@ function imageMarkup(item, eager = false) {
 }
 
 function setMeta() {
-  document.title = site.title;
-  document.querySelector("meta[name='keywords']")?.setAttribute("content", site.keywords);
-  document.querySelector("meta[name='description']")?.setAttribute("content", site.description);
+  applyTdk();
 }
 
 function byHot() {
@@ -204,7 +229,7 @@ function renderLibrary() {
 
 function renderDetail() {
   const item = items.find((entry) => entry.id === params.get("id")) || items[0];
-  document.title = `${item.title}-日本经典片在线观看-${site.name}`;
+  document.title = `${item.title}-${site.name}`;
   document.querySelector("meta[name='description']")?.setAttribute("content", item.summary);
   document.getElementById("detailRoot").innerHTML = `
     <figure class="detail-poster">${imageMarkup(item, true)}</figure>
@@ -220,6 +245,11 @@ function renderDetail() {
   document.getElementById("relatedGrid").innerHTML = related.map((entry) => card(entry)).join("");
 }
 
-if (page === "home") renderHome();
-if (page === "library") renderLibrary();
-if (page === "detail") renderDetail();
+async function bootstrap() {
+  await loadTdk();
+  if (page === "home") renderHome();
+  if (page === "library") renderLibrary();
+  if (page === "detail") renderDetail();
+}
+
+bootstrap();
