@@ -222,7 +222,7 @@ function renderLibrary() {
     next.set("sort", select.value);
     location.href = `./library.html?${next.toString()}`;
   };
-  document.getElementById("libraryTitle").textContent = kind === "全部" ? "日本电影在线片库" : `${kind}在线片库`;
+  document.getElementById("libraryTitle").textContent = kind === "全部" ? "日本电影在线全量片库" : `${kind}频道索引`;
   document.getElementById("resultCount").textContent = `${list.length} 部内容`;
   document.getElementById("libraryGrid").innerHTML = list.map((item, index) => card(item, index % 7 === 0 ? "strip" : "poster")).join("");
 }
@@ -239,7 +239,7 @@ function renderDetail() {
       <p class="sub">${item.originalTitle}</p>
       <div class="facts"><span>评分 ${item.score}</span><span>年份 ${item.year}</span><span>频道 ${item.kind}</span><span>题材 ${item.genre}</span></div>
       <p>${item.summary}</p>
-      <a class="action" href="./library.html?kind=${encodeURIComponent(item.kind)}">浏览同频道影片</a>
+      <a class="action" href="./library.html?kind=${encodeURIComponent(item.kind)}">查看同频道内容</a>
     </article>`;
   const related = items.filter((entry) => entry.id !== item.id && (entry.kind === item.kind || entry.genre === item.genre)).slice(0, 10);
   document.getElementById("relatedGrid").innerHTML = related.map((entry) => card(entry)).join("");
