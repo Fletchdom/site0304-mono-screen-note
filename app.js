@@ -1,6 +1,9 @@
 const params = new URLSearchParams(location.search);
 const page = document.body.dataset.page;
-const tdk = {
+
+const site = {
+  name: "赤铜映画档案",
+  en: "Akagane Film Vault",
   title: "日本经典片,最新好看的日本经典电影在线观看,经典电影_看片不卡顿",
   keywords: "日本经典片,日本经典电影,经典电影在线观看,日本老电影,日本新电影,高清电影,免费电影,看片不卡顿",
   description: "日本经典片在线观看平台，汇集最新好看的日本经典电影，高清画质，看片不卡顿。提供丰富的经典电影资源，包括日本经典老片、新片等多种类型影片。"
@@ -52,11 +55,11 @@ const rows = [
   ["jp-043", "普罗米亚", "Promare", "动漫电影", 2019, 8.1, "动作", "./assets/posters/jp-043.jpg"],
   ["jp-044", "给桃子的信", "A Letter to Momo", "动漫电影", 2011, 8.2, "奇幻", "./assets/posters/jp-044.jpg"],
   ["jp-045", "The Boyfriend", "The Boyfriend", "综艺", 2024, 8.1, "真人秀", "./assets/posters/jp-045.svg"],
-  ["jp-046", "双层公寓 都会男女", "Terrace House: Boys & Girls in the City", "综艺", 2015, 8.1, "真人秀", "./assets/posters/jp-046.svg"],
+  ["jp-046", "双层公寓 都会男女", "Terrace House", "综艺", 2015, 8.1, "真人秀", "./assets/posters/jp-046.svg"],
   ["jp-047", "Music Station", "Music Station", "综艺", 1986, 8.2, "音乐", "./assets/posters/jp-047.jpg"],
   ["jp-048", "寿司之神", "Jiro Dreams of Sushi", "纪录片", 2011, 8.7, "美食", "./assets/posters/jp-048.svg"],
   ["jp-049", "梦与狂想的王国", "The Kingdom of Dreams and Madness", "纪录片", 2013, 8.6, "电影", "./assets/posters/jp-049.svg"],
-  ["jp-050", "不了神话 宫崎骏", "Never-Ending Man: Hayao Miyazaki", "纪录片", 2016, 8.4, "人物", "./assets/posters/jp-050.svg"],
+  ["jp-050", "不了神话 宫崎骏", "Never-Ending Man", "纪录片", 2016, 8.4, "人物", "./assets/posters/jp-050.svg"],
   ["jp-051", "东京奥林匹克", "Tokyo Olympiad", "纪录片", 1965, 8.2, "体育", "./assets/posters/jp-051.svg"],
   ["jp-052", "坂本龙一：终曲", "Ryuichi Sakamoto: Coda", "纪录片", 2017, 8.5, "音乐", "./assets/posters/jp-052.svg"],
   ["jp-053", "链锯人 剧场版：蕾塞篇", "Chainsaw Man: Reze Arc", "动漫电影", 2025, 9.1, "动作", "./assets/posters/jp-053.jpg"],
@@ -64,67 +67,74 @@ const rows = [
   ["jp-055", "银魂完结篇：永远的万事屋", "Gintama: Be Forever Yorozuya", "动漫电影", 2013, 8.9, "动作", "./assets/posters/jp-055.jpg"],
   ["jp-056", "进击的巨人：最后的进击", "Attack on Titan: The Last Attack", "动漫电影", 2024, 8.8, "动作", "./assets/posters/jp-056.jpg"],
   ["jp-057", "紫罗兰永恒花园 剧场版", "Violet Evergarden: The Movie", "动漫电影", 2020, 8.8, "剧情", "./assets/posters/jp-057.jpg"],
-  ["jp-058", "伤物语 III 冷血篇", "Kizumonogatari Part 3", "动漫电影", 2017, 8.8, "动作", "./assets/posters/jp-058.jpg"],
+  ["jp-058", "伤物语III 冷血篇", "Kizumonogatari Part 3", "动漫电影", 2017, 8.8, "动作", "./assets/posters/jp-058.jpg"],
   ["jp-059", "辉夜大小姐：初吻不会结束", "Kaguya-sama: The First Kiss", "动漫电影", 2022, 8.7, "喜剧", "./assets/posters/jp-059.jpg"],
   ["jp-060", "哈尔的移动城堡", "Howl's Moving Castle", "动漫电影", 2004, 8.7, "奇幻", "./assets/posters/jp-060.jpg"],
   ["jp-061", "幽灵公主", "Princess Mononoke", "动漫电影", 1997, 8.7, "冒险", "./assets/posters/jp-061.jpg"],
   ["jp-062", "鬼灭之刃 无限城篇 第一章", "Demon Slayer: Infinity Castle", "动漫电影", 2025, 8.7, "动作", "./assets/posters/jp-062.jpg"],
   ["jp-063", "赛马娘 新时代之门", "Umamusume: Beginning of a New Era", "动漫电影", 2024, 8.6, "运动", "./assets/posters/jp-063.jpg"],
-  ["jp-064", "Fate/stay night 天之杯III", "Heaven's Feel III. Spring Song", "动漫电影", 2020, 8.6, "动作", "./assets/posters/jp-064.jpg"],
+  ["jp-064", "Fate/stay night 天之杯III", "Heaven's Feel III", "动漫电影", 2020, 8.6, "动作", "./assets/posters/jp-064.jpg"],
   ["jp-065", "排球少年 垃圾场决战", "Haikyu!! The Dumpster Battle", "动漫电影", 2024, 8.6, "运动", "./assets/posters/jp-065.jpg"],
-  ["jp-066", "天元突破红莲螺岩 螺岩篇", "Gurren Lagann: The Lights in the Sky are Stars", "动漫电影", 2009, 8.6, "科幻", "./assets/posters/jp-066.jpg"],
+  ["jp-066", "天元突破 红莲螺岩 螺岩篇", "Gurren Lagann Movie 2", "动漫电影", 2009, 8.6, "科幻", "./assets/posters/jp-066.jpg"],
   ["jp-067", "来自深渊 深魂的黎明", "Made in Abyss: Dawn of the Deep Soul", "动漫电影", 2020, 8.6, "冒险", "./assets/posters/jp-067.jpg"],
-  ["jp-068", "青春猪头少年不会梦到怀梦美少女", "Rascal Does Not Dream of a Dreaming Girl", "动漫电影", 2019, 8.6, "剧情", "./assets/posters/jp-068.jpg"],
+  ["jp-068", "青春猪头少年不会梦到怀梦美少女", "Rascal Does Not Dream", "动漫电影", 2019, 8.6, "剧情", "./assets/posters/jp-068.jpg"],
   ["jp-069", "凉宫春日的消失", "The Disappearance of Haruhi Suzumiya", "动漫电影", 2010, 8.6, "青春", "./assets/posters/jp-069.jpg"],
   ["jp-070", "新世纪福音战士新剧场版：终", "Evangelion: 3.0+1.0", "动漫电影", 2021, 8.6, "科幻", "./assets/posters/jp-070.jpg"],
   ["jp-071", "虫师 铃之滴", "Mushi-Shi: Drops of Bells", "动漫电影", 2015, 8.6, "奇幻", "./assets/posters/jp-071.jpg"],
   ["jp-072", "新世纪福音战士剧场版：Air/真心为你", "The End of Evangelion", "动漫电影", 1997, 8.6, "科幻", "./assets/posters/jp-072.jpg"],
-  ["jp-073", "伤物语 II 热血篇", "Kizumonogatari Part 2", "动漫电影", 2016, 8.6, "动作", "./assets/posters/jp-073.jpg"],
+  ["jp-073", "伤物语II 热血篇", "Kizumonogatari Part 2", "动漫电影", 2016, 8.6, "动作", "./assets/posters/jp-073.jpg"],
   ["jp-074", "狼的孩子雨和雪", "Wolf Children", "动漫电影", 2012, 8.6, "家庭", "./assets/posters/jp-074.jpg"],
   ["jp-075", "未麻的部屋", "Perfect Blue", "动漫电影", 1998, 8.6, "悬疑", "./assets/posters/jp-075.jpg"],
   ["jp-076", "我想吃掉你的胰脏", "I Want To Eat Your Pancreas", "动漫电影", 2018, 8.6, "剧情", "./assets/posters/jp-076.jpg"],
   ["jp-077", "鬼灭之刃 无限列车篇", "Demon Slayer: Mugen Train", "动漫电影", 2020, 8.5, "动作", "./assets/posters/jp-077.jpg"],
   ["jp-078", "银魂 新译红樱篇", "Gintama: The Movie", "动漫电影", 2010, 8.5, "动作", "./assets/posters/jp-078.jpg"],
   ["jp-079", "少女歌剧 剧场版", "Revue Starlight: The Movie", "动漫电影", 2021, 8.5, "音乐", "./assets/posters/jp-079.jpg"],
-  ["jp-080", "魔法少女小圆 剧场版 叛逆的物语", "Puella Magi Madoka Magica: Rebellion", "动漫电影", 2013, 8.5, "奇幻", "./assets/posters/jp-080.jpg"],
-  ["jp-081", "空之境界 第五章 矛盾螺旋", "The Garden of Sinners: Paradox Spiral", "动漫电影", 2008, 8.5, "动作", "./assets/posters/jp-081.jpg"],
-  ["jp-082", "Fate/stay night 天之杯II", "Heaven's Feel II. Lost Butterfly", "动漫电影", 2019, 8.5, "动作", "./assets/posters/jp-082.jpg"],
-  ["jp-083", "命运石之门 负荷领域的既视感", "Steins;Gate: The Movie", "动漫电影", 2013, 8.4, "科幻", "./assets/posters/jp-083.jpg"],
-  ["jp-084", "紫罗兰永恒花园 外传", "Violet Evergarden: Eternity and the Auto Memory Doll", "动漫电影", 2019, 8.4, "剧情", "./assets/posters/jp-084.jpg"],
-  ["jp-085", "夏目友人帐 缘结空蝉", "Natsume's Book of Friends Movie", "动漫电影", 2018, 8.4, "生活", "./assets/posters/jp-085.jpg"]
+  ["jp-080", "魔法少女小圆 剧场版 叛逆的物语", "Madoka Magica: Rebellion", "动漫电影", 2013, 8.5, "奇幻", "./assets/posters/jp-080.jpg"],
+  ["jp-081", "空之境界 第五章 矛盾螺旋", "The Garden of Sinners", "动漫电影", 2008, 8.5, "动作", "./assets/posters/jp-081.jpg"],
+  ["jp-082", "Fate/stay night 天之杯II", "Heaven's Feel II", "动漫电影", 2019, 8.5, "动作", "./assets/posters/jp-082.jpg"],
+  ["jp-083", "命运石之门：负荷领域的既视感", "Steins;Gate: The Movie", "动漫电影", 2013, 8.4, "科幻", "./assets/posters/jp-083.jpg"],
+  ["jp-084", "紫罗兰永恒花园 外传", "Violet Evergarden: Eternity", "动漫电影", 2019, 8.4, "剧情", "./assets/posters/jp-084.jpg"],
+  ["jp-085", "夏目友人帐：缘结空蝉", "Natsume's Book of Friends Movie", "动漫电影", 2018, 8.4, "生活", "./assets/posters/jp-085.jpg"]
 ];
 
 const items = rows.map((row, index) => {
   const [id, title, originalTitle, kind, year, score, genre, poster] = row;
+  const scoreText = Number(score).toFixed(1);
   return {
     id,
     title,
     originalTitle,
     kind,
     year,
-    score: Number(score).toFixed(1),
+    score: scoreText,
     genre,
     poster,
-    hot: 18000 - index * 73 + Math.round(Number(score) * 120) + (poster.endsWith(".svg") ? -10000 : 25000),
-    summary: `${title}收录于黑白映画手册${kind}频道，提供片名、原名、年份、评分、题材看点与相关推荐。你可以在日本经典片库中按频道、评分和年份继续浏览，快速发现日本经典电影、日本老电影、日本新电影、日剧电影、动漫电影、综艺与纪录片内容。`
+    hot: 86000 - index * 311 + Math.round(Number(score) * 190),
+    summary: `${title}收录在${site.name}${kind}频道，提供片名、原名、年份、评分、题材和同类推荐。用户可以在日本电影网、日本电影在线、日本电影官网、日本电影网站和日本电影在线观看入口中继续浏览日本经典电影、日本老电影、日本新电影、日剧、动漫电影、综艺与纪录片内容，快速找到适合当日观看的高清影片。`
   };
 });
 
-function imageMarkup(item) {
-  return `<img src="${item.poster}" alt="${item.title}" loading="lazy">`;
+const categoryNames = ["全部", "日本电影", "日剧", "动漫电影", "综艺", "纪录片"];
+
+function imageMarkup(item, eager = false) {
+  return `<img src="${item.poster}" alt="${item.title}海报" ${eager ? "" : "loading=\"lazy\""}>`;
 }
 
 function setMeta() {
-  document.title = tdk.title;
-  document.querySelector("meta[name='keywords']")?.setAttribute("content", tdk.keywords);
-  document.querySelector("meta[name='description']")?.setAttribute("content", tdk.description);
+  document.title = site.title;
+  document.querySelector("meta[name='keywords']")?.setAttribute("content", site.keywords);
+  document.querySelector("meta[name='description']")?.setAttribute("content", site.description);
 }
 
-function card(item) {
-  return `<article class="poster-card">
-    <a href="./movie.html?id=${encodeURIComponent(item.id)}" aria-label="查看${item.title}">
-      <div class="poster-frame">${imageMarkup(item)}<i>${item.score}</i></div>
-      <div class="poster-info">
+function byHot() {
+  return [...items].sort((a, b) => b.hot - a.hot);
+}
+
+function card(item, mode = "poster") {
+  return `<article class="${mode === "strip" ? "strip-card" : "poster-card"}">
+    <a href="./movie.html?id=${encodeURIComponent(item.id)}">
+      <figure>${imageMarkup(item)}<figcaption>${item.score}</figcaption></figure>
+      <div>
         <span>${item.kind}</span>
         <h3>${item.title}</h3>
         <p>${item.originalTitle}</p>
@@ -134,48 +144,45 @@ function card(item) {
   </article>`;
 }
 
-function row(item) {
-  return `<a class="lane-card" href="./movie.html?id=${encodeURIComponent(item.id)}">
-    ${imageMarkup(item)}
-    <span><b>${item.title}</b><small>${item.kind} · ${item.genre} · ${item.score}</small></span>
+function renderMini(item, index) {
+  return `<a class="ledger-row" href="./movie.html?id=${item.id}">
+    <b>${String(index + 1).padStart(2, "0")}</b>
+    <span>${item.title}<small>${item.kind} / ${item.genre}</small></span>
+    <i>${item.score}</i>
   </a>`;
-}
-
-function byHot() {
-  return [...items].sort((a, b) => b.hot - a.hot);
 }
 
 function renderHome() {
   setMeta();
   const hot = byHot();
-  const first = hot[0];
-  document.getElementById("heroPoster").innerHTML = `<a href="./movie.html?id=${first.id}">${imageMarkup(first)}<span><b>正在热看</b><strong>${first.title}</strong><em>${first.kind} / ${first.score}</em></span></a>`;
-  document.getElementById("todayLane").innerHTML = hot.slice(1, 9).map(row).join("");
-  document.getElementById("scoreRank").innerHTML = [...items]
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 10)
-    .map((item, index) => `<a href="./movie.html?id=${item.id}"><strong>${String(index + 1).padStart(2, "0")}</strong><span>${item.title}</span><b>${item.score}</b></a>`)
-    .join("");
-  document.getElementById("homeGrid").innerHTML = hot.slice(0, 40).map(card).join("");
+  const feature = hot[4];
+  document.getElementById("featurePoster").innerHTML = `<a href="./movie.html?id=${feature.id}">${imageMarkup(feature, true)}<span>${feature.kind} / ${feature.score}</span></a>`;
+  document.getElementById("tickerList").innerHTML = hot.slice(0, 8).map(renderMini).join("");
+  document.getElementById("vaultGrid").innerHTML = hot.slice(0, 24).map((item) => card(item)).join("");
+  document.getElementById("weekGrid").innerHTML = hot.slice(24, 42).map((item) => card(item, "strip")).join("");
+  document.getElementById("scoreRank").innerHTML = [...items].sort((a, b) => b.score - a.score).slice(0, 12).map(renderMini).join("");
+  document.getElementById("typeRail").innerHTML = categoryNames.slice(1).map((kind) => {
+    const count = items.filter((item) => item.kind === kind).length;
+    const sample = items.find((item) => item.kind === kind);
+    return `<a href="./library.html?kind=${encodeURIComponent(kind)}"><strong>${kind}</strong><span>${count} 部内容</span>${sample ? imageMarkup(sample) : ""}</a>`;
+  }).join("");
 }
 
 function currentList() {
   const kind = params.get("kind") || "全部";
-  const genre = params.get("genre") || "";
-  const sort = params.get("sort") || document.getElementById("sortSelect")?.value || "hot";
+  const sort = params.get("sort") || "hot";
   let list = [...items];
   if (kind !== "全部") list = list.filter((item) => item.kind === kind);
-  if (genre) list = list.filter((item) => item.genre === genre);
   list.sort((a, b) => sort === "score" ? b.score - a.score : sort === "year" ? b.year - a.year : b.hot - a.hot);
-  return { list, kind, genre };
+  return { list, kind, sort };
 }
 
 function renderLibrary() {
   setMeta();
-
+  document.getElementById("filters").innerHTML = categoryNames.map((kind) => `<button data-kind="${kind}">${kind}</button>`).join("");
+  const { list, kind, sort } = currentList();
   document.querySelectorAll("[data-kind]").forEach((button) => {
-    const isActive = (params.get("kind") || "全部") === button.dataset.kind;
-    button.classList.toggle("active", isActive);
+    button.classList.toggle("active", button.dataset.kind === kind);
     button.onclick = () => {
       const next = new URLSearchParams(location.search);
       if (button.dataset.kind === "全部") next.delete("kind");
@@ -183,39 +190,34 @@ function renderLibrary() {
       location.href = next.toString() ? `./library.html?${next.toString()}` : "./library.html";
     };
   });
-
   const select = document.getElementById("sortSelect");
-  select.value = params.get("sort") || "hot";
+  select.value = sort;
   select.onchange = () => {
-    params.set("sort", select.value);
-    location.href = `./library.html?${params.toString()}`;
+    const next = new URLSearchParams(location.search);
+    next.set("sort", select.value);
+    location.href = `./library.html?${next.toString()}`;
   };
-
-  const { list, kind, genre } = currentList();
-  const suffix = genre ? ` / ${genre}` : "";
-  document.getElementById("libraryTitle").textContent = kind === "全部" ? `日本高清片库${suffix}` : `${kind}频道${suffix}`;
-  document.getElementById("resultCount").textContent = `${list.length} 条内容`;
-  document.getElementById("libraryGrid").innerHTML = list.map(card).join("");
+  document.getElementById("libraryTitle").textContent = kind === "全部" ? "日本电影在线片库" : `${kind}在线片库`;
+  document.getElementById("resultCount").textContent = `${list.length} 部内容`;
+  document.getElementById("libraryGrid").innerHTML = list.map((item, index) => card(item, index % 7 === 0 ? "strip" : "poster")).join("");
 }
 
 function renderDetail() {
   const item = items.find((entry) => entry.id === params.get("id")) || items[0];
-  document.title = `${item.title}-日本经典片高清在线观看-黑白映画手册`;
-  document.querySelector("meta[name='description']").setAttribute("content", item.summary);
+  document.title = `${item.title}-日本经典片在线观看-${site.name}`;
+  document.querySelector("meta[name='description']")?.setAttribute("content", item.summary);
   document.getElementById("detailRoot").innerHTML = `
-    <figure>${imageMarkup(item)}</figure>
-    <article>
-      <p class="label">${item.kind} · ${item.genre}</p>
+    <figure class="detail-poster">${imageMarkup(item, true)}</figure>
+    <article class="detail-copy">
+      <p class="eyebrow">${item.kind} / ${item.genre}</p>
       <h1>${item.title}</h1>
       <p class="sub">${item.originalTitle}</p>
       <div class="facts"><span>评分 ${item.score}</span><span>年份 ${item.year}</span><span>频道 ${item.kind}</span><span>题材 ${item.genre}</span></div>
       <p>${item.summary}</p>
-      <a class="text-link" href="./library.html?kind=${encodeURIComponent(item.kind)}">浏览同频道片单</a>
+      <a class="action" href="./library.html?kind=${encodeURIComponent(item.kind)}">浏览同频道影片</a>
     </article>`;
-  const related = items
-    .filter((entry) => entry.id !== item.id && (entry.kind === item.kind || entry.genre === item.genre))
-    .slice(0, 8);
-  document.getElementById("relatedGrid").innerHTML = related.map(card).join("");
+  const related = items.filter((entry) => entry.id !== item.id && (entry.kind === item.kind || entry.genre === item.genre)).slice(0, 10);
+  document.getElementById("relatedGrid").innerHTML = related.map((entry) => card(entry)).join("");
 }
 
 if (page === "home") renderHome();

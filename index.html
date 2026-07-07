@@ -9,56 +9,67 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body data-page="home">
-    <header class="topbar">
-      <a class="brand" href="./index.html"><strong>黑白映画手册</strong><span>MONO SCREEN NOTE</span></a>
-      <nav class="nav" aria-label="主导航">
-        <a class="active" href="./index.html">经典首页</a>
-        <a href="./library.html">片目总览</a>
-        <a href="./library.html?kind=日本电影">日本经典片</a>
-        <a href="./library.html?kind=日剧">日剧电影</a>
-        <a href="./library.html?kind=动漫电影">动画长片</a>
-        <a href="./library.html?kind=综艺">综艺档案</a>
-        <a href="./library.html?kind=纪录片">纪录影像</a>
-      </nav>
-    </header>
-    <main>
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="label">Classic Film Ledger</p>
-          <h1>日本经典片在线观看手册，整理老电影、新电影与高分日系片目</h1>
-          <p>黑白映画手册围绕日本经典片、日本经典电影、经典电影在线观看和高清电影内容建立片目索引，覆盖日本老电影、日本新电影、日剧电影、动漫电影、综艺与纪录片。</p>
-          <div class="hero-stats"><span>85+ 片目记录</span><span>40+ 首页内容</span><span>经典片 / 日剧 / 动画 / 综艺 / 纪录片</span></div>
-        </div>
-        <div class="hero-poster" id="heroPoster"></div>
-      </section>
-      <section class="quick-tabs" aria-label="内容频道">
-        <a href="./library.html?kind=日本电影"><b>经典日影</b><span>日本经典电影与老电影</span></a>
-        <a href="./library.html?kind=日剧"><b>剧集名册</b><span>日剧电影与高分剧集</span></a>
-        <a href="./library.html?kind=动漫电影"><b>动画长片</b><span>日本动漫电影与剧场版</span></a>
-        <a href="./library.html?kind=综艺"><b>综艺档案</b><span>音乐、真人秀与放送记录</span></a>
-        <a href="./library.html?kind=纪录片"><b>纪实记录</b><span>人物、文化、美食和电影纪录</span></a>
-      </section>
-      <section class="section split-panel">
-        <div>
-          <div class="section-head"><p class="label">Viewing Notes</p><h2>本日片目</h2></div>
-          <div class="watch-lane" id="todayLane"></div>
-        </div>
-        <aside class="rank-box">
-          <p class="label">Critic Index</p>
-          <h2>经典评分榜</h2>
-          <div id="scoreRank"></div>
-        </aside>
-      </section>
-      <section class="section">
-        <div class="section-head wide"><div><p class="label">Film Shelf</p><h2>最新好看的日本经典电影</h2></div><a href="./library.html">查看完整片目</a></div>
-        <div class="poster-grid" id="homeGrid"></div>
-      </section>
-    </main>
+    <div class="site-shell">
+      <aside class="side-nav">
+        <a class="brand" href="./index.html"><strong>赤铜映画档案</strong><span>Akagane Film Vault</span></a>
+        <nav aria-label="主导航">
+          <a class="active" href="./index.html">今日首页</a>
+          <a href="./library.html">日本片库</a>
+          <a href="./library.html?kind=日本电影">日本电影馆</a>
+          <a href="./library.html?kind=日剧">日剧连映</a>
+          <a href="./library.html?kind=动漫电影">动漫剧场</a>
+          <a href="./library.html?kind=综艺">综艺放送</a>
+          <a href="./library.html?kind=纪录片">纪实影像</a>
+        </nav>
+        <p>日本电影网、日本电影在线、日本电影官网、日本电影网站与日本电影在线观看内容索引。</p>
+      </aside>
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Classic Japanese Cinema</p>
+            <h1>日本经典片与高分日系内容在线浏览</h1>
+            <p>精选日本高分电影与热播剧集，按类型、热度和更新状态整理，方便快速发现想看的内容。这里覆盖日本电影、日剧、动漫电影、综艺、纪录片，适合按片名、评分、年份和题材继续筛选。</p>
+            <div class="hero-actions">
+              <a class="action" href="./library.html">进入完整片库</a>
+              <a class="ghost" href="./library.html?sort=score">查看高分经典</a>
+            </div>
+          </div>
+          <div class="feature-poster" id="featurePoster"></div>
+          <div class="ticker">
+            <h2>热度片单</h2>
+            <div id="tickerList"></div>
+          </div>
+        </section>
+        <section class="type-rail" id="typeRail" aria-label="内容频道"></section>
+        <section class="section vault-section">
+          <div class="section-head">
+            <p class="eyebrow">Film Vault</p>
+            <h2>日本电影在线观看精选</h2>
+            <a href="./library.html">全部内容</a>
+          </div>
+          <div class="vault-grid" id="vaultGrid"></div>
+        </section>
+        <section class="section dual-section">
+          <div>
+            <div class="section-head">
+              <p class="eyebrow">Fresh Line</p>
+              <h2>近期值得观看</h2>
+            </div>
+            <div class="week-grid" id="weekGrid"></div>
+          </div>
+          <aside class="score-board">
+            <p class="eyebrow">Score Board</p>
+            <h2>高分榜</h2>
+            <div id="scoreRank"></div>
+          </aside>
+        </section>
+      </main>
+    </div>
     <footer class="footer">
-      <div><strong>黑白映画手册</strong><p>围绕日本经典片、日本经典电影、日本老电影、日本新电影和高清电影内容整理片目入口。</p></div>
-      <div><h3>片目频道</h3><a href="./library.html?kind=日本电影">日本经典片</a><a href="./library.html?kind=日剧">日剧电影</a><a href="./library.html?kind=动漫电影">动画长片</a></div>
-      <div><h3>浏览索引</h3><a href="./library.html?sort=score">高分经典</a><a href="./library.html?sort=year">近年新片</a><a href="./library.html">全部片目</a></div>
-      <div><h3>版权声明</h3><p>Copyright © 2026 黑白映画手册. All Rights Reserved.</p><p>提供日本经典片在线观看片目、评分信息和观影推荐参考。</p></div>
+      <div><strong>赤铜映画档案</strong><p>围绕日本电影网、日本电影在线、日本电影官网、日本电影网站和日本电影在线观看需求整理片目入口。</p></div>
+      <div><h3>内容频道</h3><a href="./library.html?kind=日本电影">日本电影</a><a href="./library.html?kind=日剧">日剧</a><a href="./library.html?kind=动漫电影">动漫电影</a></div>
+      <div><h3>观影指南</h3><a href="./library.html?sort=score">高分经典</a><a href="./library.html?sort=year">近年新片</a><a href="./library.html">完整片库</a></div>
+      <div><h3>版权声明</h3><p>Copyright © 2026 赤铜映画档案. All Rights Reserved.</p><p>提供日本经典片在线观看片目、评分信息和观影推荐参考。</p></div>
     </footer>
     <script src="./app.js"></script>
   </body>

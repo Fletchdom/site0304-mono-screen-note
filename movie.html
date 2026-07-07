@@ -9,30 +9,37 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body data-page="detail">
-    <header class="topbar">
-      <a class="brand" href="./index.html"><strong>黑白映画手册</strong><span>MONO SCREEN NOTE</span></a>
-      <nav class="nav" aria-label="主导航">
-        <a href="./index.html">经典首页</a>
-        <a href="./library.html">片目总览</a>
-        <a href="./library.html?kind=日本电影">日本经典片</a>
-        <a href="./library.html?kind=日剧">日剧电影</a>
-        <a href="./library.html?kind=动漫电影">动画长片</a>
-        <a href="./library.html?kind=综艺">综艺档案</a>
-        <a href="./library.html?kind=纪录片">纪录影像</a>
-      </nav>
-    </header>
-    <main>
-      <section class="detail" id="detailRoot"></section>
-      <section class="section">
-        <div class="section-head wide"><div><p class="label">Related Notes</p><h2>同类片目</h2></div><a href="./library.html">返回片目总览</a></div>
-        <div class="poster-grid" id="relatedGrid"></div>
-      </section>
-    </main>
+    <div class="site-shell">
+      <aside class="side-nav">
+        <a class="brand" href="./index.html"><strong>赤铜映画档案</strong><span>Akagane Film Vault</span></a>
+        <nav aria-label="主导航">
+          <a href="./index.html">今日首页</a>
+          <a href="./library.html">日本片库</a>
+          <a href="./library.html?kind=日本电影">日本电影馆</a>
+          <a href="./library.html?kind=日剧">日剧连映</a>
+          <a href="./library.html?kind=动漫电影">动漫剧场</a>
+          <a href="./library.html?kind=综艺">综艺放送</a>
+          <a href="./library.html?kind=纪录片">纪实影像</a>
+        </nav>
+        <p>查看片名、原名、年份、评分、题材和同类片目。</p>
+      </aside>
+      <main>
+        <section class="detail" id="detailRoot"></section>
+        <section class="section">
+          <div class="section-head">
+            <p class="eyebrow">Related</p>
+            <h2>同类内容推荐</h2>
+            <a href="./library.html">返回片库</a>
+          </div>
+          <div class="vault-grid related-grid" id="relatedGrid"></div>
+        </section>
+      </main>
+    </div>
     <footer class="footer">
-      <div><strong>黑白映画手册</strong><p>日本经典片在线观看、日剧电影、日本动漫电影与纪录片推荐索引。</p></div>
-      <div><h3>频道</h3><a href="./library.html?kind=日本电影">日本经典片</a><a href="./library.html?kind=日剧">日剧电影</a></div>
+      <div><strong>赤铜映画档案</strong><p>日本经典片在线观看、日本电影官网式片目浏览与同类内容推荐。</p></div>
+      <div><h3>频道</h3><a href="./library.html?kind=日本电影">日本电影</a><a href="./library.html?kind=日剧">日剧</a></div>
       <div><h3>片目索引</h3><a href="./library.html?sort=score">高分经典</a><a href="./library.html?sort=year">日本新电影</a></div>
-      <div><h3>版权信息</h3><p>Copyright © 2026 黑白映画手册.</p></div>
+      <div><h3>版权信息</h3><p>Copyright © 2026 赤铜映画档案.</p></div>
     </footer>
     <script src="./app.js"></script>
   </body>
