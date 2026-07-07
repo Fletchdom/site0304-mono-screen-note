@@ -117,7 +117,7 @@ const items = rows.map((row, index) => {
 const categoryNames = ["全部", "日本电影", "日剧", "动漫电影", "综艺", "纪录片"];
 
 function imageMarkup(item, eager = false) {
-  return `<img src="${item.poster}" alt="${item.title}海报" ${eager ? "" : "loading=\"lazy\""}>`;
+  return `<img src="${item.poster}" alt="${item.title}海报" decoding="async"${eager ? " fetchpriority=\"high\"" : ""}>`;
 }
 
 function setMeta() {
