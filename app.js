@@ -2,8 +2,8 @@ const params = new URLSearchParams(location.search);
 const page = document.body.dataset.page;
 
 const site = {
-  name: "赤铜映画档案",
-  en: "Akagane Film Vault",
+  name: "日本电影",
+  en: "Japanese Cinema",
   title: "日本经典片,最新好看的日本经典电影在线观看,经典电影_看片不卡顿",
   keywords: "日本经典片,日本经典电影,经典电影在线观看,日本老电影,日本新电影,高清电影,免费电影,看片不卡顿",
   description: "日本经典片在线观看平台，汇集最新好看的日本经典电影，高清画质，看片不卡顿。提供丰富的经典电影资源，包括日本经典老片、新片等多种类型影片。"

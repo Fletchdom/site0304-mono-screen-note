@@ -159,9 +159,14 @@ h2 { margin-bottom: 0; color: var(--gold); font-size: clamp(1.35rem, 2vw, 2.25re
   background: #0f0909;
   border: 1px solid var(--line);
   overflow: hidden;
+  padding: 10px;
 }
 .feature-poster a { position: relative; display: block; height: 100%; }
-.feature-poster img { height: 100%; object-fit: cover; }
+.feature-poster img {
+  height: 100%;
+  object-fit: contain;
+  background: #0f0909;
+}
 .feature-poster span {
   position: absolute;
   left: 12px;
@@ -198,7 +203,7 @@ h2 { margin-bottom: 0; color: var(--gold); font-size: clamp(1.35rem, 2vw, 2.25re
   margin-top: 18px;
 }
 .type-rail a {
-  min-height: 126px;
+  min-height: 156px;
   position: relative;
   overflow: hidden;
   display: grid;
@@ -213,8 +218,15 @@ h2 { margin-bottom: 0; color: var(--gold); font-size: clamp(1.35rem, 2vw, 2.25re
   inset: 0;
   height: 100%;
   object-fit: cover;
-  opacity: .2;
-  filter: saturate(.8);
+  opacity: .78;
+  filter: saturate(1.08) contrast(1.04);
+}
+.type-rail a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(12,8,8,.05), rgba(12,8,8,.78));
+  z-index: 0;
 }
 .type-rail strong,
 .type-rail span { position: relative; z-index: 1; }
@@ -259,6 +271,12 @@ h2 { margin-bottom: 0; color: var(--gold); font-size: clamp(1.35rem, 2vw, 2.25re
   height: 100%;
   object-fit: cover;
   transition: transform .25s ease, filter .25s ease;
+}
+.poster-card img[src$=".svg"],
+.strip-card img[src$=".svg"] {
+  object-fit: contain;
+  padding: 8px;
+  background: #120b0b;
 }
 .poster-card:hover img,
 .strip-card:hover img { transform: scale(1.035); filter: saturate(1.12) contrast(1.04); }
